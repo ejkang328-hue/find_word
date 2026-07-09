@@ -205,16 +205,23 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`\n✅ 쉬운 단어 찾기 서버 실행 중 → http://localhost:${PORT}\n`);
-  if (!hasKey(NAVER_CLIENT_ID) || !hasKey(NAVER_CLIENT_SECRET)) {
-    console.log("⚠️  네이버 API 키가 없습니다. .env 파일에 NAVER_CLIENT_ID / NAVER_CLIENT_SECRET 를 넣어주세요.");
-  } else {
-    console.log("✔  네이버 검색 사용 가능");
-  }
-  if (!hasKey(GEMINI_API_KEY)) {
-    console.log("ℹ️  Gemini 키가 아직 없어 '쉽게 바꾸기'는 비활성화 상태입니다. (네이버 검색은 사용 가능)");
-  } else {
-    console.log("✔  Gemini(쉽게 바꾸기) 사용 가능");
-  }
-});
+// Vercel(서버리스)에서는 app.listen 없이 앱을 export 해서 실행합니다.
+// 로컬(내 컴퓨터)에서 실행할 때만 서버를 직접 띄웁니다.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n✅ 쉬운 단어 찾기 서버 실행 중 → http://localhost:${PORT}\n`);
+    if (!hasKey(NAVER_CLIENT_ID) || !hasKey(NAVER_CLIENT_SECRET)) {
+      console.log("⚠️  네이버 API 키가 없습니다. .env 파일에 NAVER_CLIENT_ID / NAVER_CLIENT_SECRET 를 넣어주세요.");
+    } else {
+      console.log("✔  네이버 검색 사용 가능");
+    }
+    if (!hasKey(GEMINI_API_KEY)) {
+      console.log("ℹ️  Gemini 키가 아직 없어 '쉽게 바꾸기'는 비활성화 상태입니다. (네이버 검색은 사용 가능)");
+    } else {
+      console.log("✔  Gemini(쉽게 바꾸기) 사용 가능");
+    }
+  });
+}
+
+// Vercel 서버리스 함수용 export
+export default app;
