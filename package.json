@@ -1,0 +1,18 @@
+{
+  "name": "easy-word-finder",
+  "version": "1.0.0",
+  "description": "문장 속 모르는 단어를 네이버 검색 + Gemini AI로 학년 수준에 맞게 쉽게 설명해 주는 웹앱",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

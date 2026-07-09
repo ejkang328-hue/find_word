@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🧭 낱말 탐험대</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>🧭 낱말 탐험대</h1>
+        <p class="subtitle">학년을 고르고 문장을 넣으면, 궁금한 낱말을 탐험하듯 문맥에 맞는 뜻을 찾아줄게요!</p>
+      </header>
+
+      <section class="card">
+        <div class="field-label">1. 학년을 골라요</div>
+        <div id="levelGroup" class="levels">
+          <button class="level-btn" data-level="low">1~2학년</button>
+          <button class="level-btn active" data-level="mid">3~4학년</button>
+          <button class="level-btn" data-level="high">5~6학년</button>
+        </div>
+
+        <label class="field-label" for="sentence" style="margin-top: 20px">2. 문장을 입력해요</label>
+        <textarea
+          id="sentence"
+          placeholder="예) 그는 신중하게 결정을 내렸다."
+          rows="3"
+        ></textarea>
+
+        <label class="field-label" for="wordInput" style="margin-top: 18px">3. 궁금한 낱말을 입력해요</label>
+        <input
+          id="wordInput"
+          class="word-input"
+          type="text"
+          placeholder="예) 신중"
+          autocomplete="off"
+        />
+
+        <button id="explainBtn" class="btn btn-primary" disabled>탐험 시작! 🧭</button>
+      </section>
+
+      <section id="result" class="card result hidden"></section>
+
+      <footer class="foot">네이버 검색 + Gemini AI 로 만든 쉬운 낱말 풀이</footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
